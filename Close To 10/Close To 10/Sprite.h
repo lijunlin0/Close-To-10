@@ -12,8 +12,6 @@ private:
 	POINT m_position;
 	//图片的选择状态
 	bool m_select;
-	//图片的消除状态
-	bool m_valid;
 public:
 	void init(POINT p, int value);
 	//值对应的图片路径
@@ -22,11 +20,10 @@ public:
 	void set_select(bool select);
 	//是否被选择
 	bool is_select();
-	//设置消除状态
-	void set_valid(bool valid);
-	//是否被消除
-	bool is_valid();
 	//获取图片的值
 	int get_value();
 	void to_plotting(int& x, int& y);
+	void from_plotting(int& x, int& y);
+	//清除当前图片
+	void clear();
 };

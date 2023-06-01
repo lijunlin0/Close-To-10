@@ -7,7 +7,6 @@ void Sprite::init(POINT p,int value)
 	m_position = p;
 	m_value = value;
 	m_select = false;
-	m_valid = false;
 
 	int x = p.x;
 	int y = p.y;
@@ -21,6 +20,12 @@ void Sprite::to_plotting(int& x, int& y)
 {
 	x *= Map::BLOCK_SIZE;
 	y *= Map::BLOCK_SIZE;
+}
+
+void from_plotting(int& x, int& y)
+{
+	x /= Map::BLOCK_SIZE;
+	y /= Map::BLOCK_SIZE;
 }
 
 //值对应的图片路径
@@ -38,6 +43,7 @@ LPCTSTR Sprite::image_name(int value)
 	case 8:return "./images/8.png";
 	case 9:return "./images/9.png";
 	case 10:return "./images/10.png";
+	default:return 0;
 	}
 }
 //设置选择状态
@@ -50,18 +56,18 @@ bool Sprite::is_select()
 {
 	return m_select;
 }
-//设置消除状态
-void Sprite::set_valid(bool valid)
-{
-	m_valid = valid;
-}
-//是否被消除
-bool Sprite::is_valid()
-{
-	return m_valid;
-}
+
 //获取图片的值
 int Sprite::get_value() 
 {
 	return m_value; 
+}
+
+//清除当前图片
+void Sprite::clear()
+{
+	int x = m_position.x;
+	int y = m_position.y;
+	to_plotting(x, y);
+	clearrectangle(x, y, x + Map::BLOCK_SIZE, y + Map::BLOCK_SIZE);
 }
