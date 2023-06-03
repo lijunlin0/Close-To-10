@@ -22,8 +22,10 @@ public:
 	bool is_select();
 	//获取图片的值
 	int get_value();
+	void set_value(int value);
 	void to_plotting(int& x, int& y);
 	void from_plotting(int& x, int& y);
 	//清除当前图片
 	void clear();
+	void draw();
 };

@@ -4,16 +4,20 @@
 using namespace std;
 void Sprite::init(POINT p,int value)
 {
-	m_position = p;
 	m_value = value;
 	m_select = false;
 
 	int x = p.x;
 	int y = p.y;
 	to_plotting(x, y);
+	m_position.x = x;
+	m_position.y = y;
+}
 
+void Sprite::draw()
+{
 	loadimage(&m_img, image_name(m_value));
-	putimage(x,y, &m_img);
+	putimage(m_position.x, m_position.y, &m_img);
 }
 
 void Sprite::to_plotting(int& x, int& y)
@@ -22,7 +26,7 @@ void Sprite::to_plotting(int& x, int& y)
 	y *= Map::BLOCK_SIZE;
 }
 
-void from_plotting(int& x, int& y)
+void Sprite::from_plotting(int& x, int& y)
 {
 	x /= Map::BLOCK_SIZE;
 	y /= Map::BLOCK_SIZE;
@@ -33,7 +37,8 @@ LPCTSTR Sprite::image_name(int value)
 {
 	switch (value)
 	{
-	case 1:cout << "成功" << endl; return "./images/1.png";
+	case 0:return "./images/0.png";
+	case 1:return "./images/1.png";
 	case 2:return "./images/2.png";
 	case 3:return "./images/3.png";
 	case 4:return "./images/4.png";
@@ -63,11 +68,13 @@ int Sprite::get_value()
 	return m_value; 
 }
 
+void Sprite::set_value(int value)
+{
+	m_value = value;
+}
+
 //清除当前图片
 void Sprite::clear()
 {
-	int x = m_position.x;
-	int y = m_position.y;
-	to_plotting(x, y);
-	clearrectangle(x, y, x + Map::BLOCK_SIZE, y + Map::BLOCK_SIZE);
+	m_value = 0;
 }

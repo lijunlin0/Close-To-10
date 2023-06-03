@@ -23,4 +23,5 @@ public:
 	void eliminate();
 	//设置当前位置
 	void set_position(POINT p);
+	void draw();
 };

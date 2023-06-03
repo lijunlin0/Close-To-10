@@ -11,6 +11,7 @@ int main()
 	initgraph(Map::BLOCK_SIZE*Map::WIDTH, Map::BLOCK_SIZE * Map::HEIGHT,SHOWCONSOLE);
 	ExMessage msg;
 	Map m;
+	m.draw();
 	StateMachine s(m);
 	while (true)
 	{
@@ -29,8 +30,10 @@ int main()
 			{
 				s.set_state(Idle);
 			}
-			cout << msg.x << "," << msg.y << endl;
-			
+
+			BeginBatchDraw();
+			m.draw();
+			EndBatchDraw();
 		}
 	}
 	system("pause");
