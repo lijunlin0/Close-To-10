@@ -5,7 +5,9 @@ enum State
 	//默认
 	Idle = 0,
 	//选中
-	Select = 1
+	Select = 1,
+	//消除
+	Eliminate = 2
 };
 
 class StateMachine

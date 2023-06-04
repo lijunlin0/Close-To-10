@@ -1,4 +1,5 @@
 #include"StateMachine.h"
+#include<iostream>
 
 StateMachine::StateMachine(Map& m):m(m)
 {
@@ -13,10 +14,15 @@ void StateMachine::set_state(State state)
 	{
 		reset();
 	}
-	if (m_state = Select)
+	else if (m_state == Select)
+	{
+		m.find();
+		std::cout << "бЁжа" << endl;
+	}
+	else
 	{
 		m.eliminate();
-		m_state = Idle;
+		set_state(Idle);
 	}
 }
 

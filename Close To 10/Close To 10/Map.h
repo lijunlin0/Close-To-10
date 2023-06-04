@@ -19,9 +19,13 @@ public:
 	Map();
 	//消除队列
 	vector<POINT> queue;
+	vector<POINT> mark;
 	//消除
 	void eliminate();
 	//设置当前位置
 	void set_position(POINT p);
 	void draw();
+	void down();
+	//查找高亮方块
+	void find();
 };

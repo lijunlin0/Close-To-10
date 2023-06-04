@@ -28,4 +28,6 @@ public:
 	//清除当前图片
 	void clear();
 	void draw();
+	//高亮图片
+	void highlight();
 };

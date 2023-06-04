@@ -48,6 +48,15 @@ LPCTSTR Sprite::image_name(int value)
 	case 8:return "./images/8.png";
 	case 9:return "./images/9.png";
 	case 10:return "./images/10.png";
+	case 101:return "./images/1.png";
+	case 102:return "./images/2.png";
+	case 103:return "./images/3.png";
+	case 104:return "./images/4.png";
+	case 105:return "./images/5.png";
+	case 106:return "./images/6.png";
+	case 107:return "./images/7.png";
+	case 108:return "./images/8.png";
+	case 109:return "./images/9.png";
 	default:return 0;
 	}
 }
@@ -77,4 +86,14 @@ void Sprite::set_value(int value)
 void Sprite::clear()
 {
 	m_value = 0;
+}
+
+//∏ﬂ¡¡Õº∆¨
+void Sprite::highlight()
+{
+	POINT p = m_position;
+	line(p.x, p.y, p.x + Map::WIDTH * Map::BLOCK_SIZE, p.y);
+	line(p.x + Map::WIDTH * Map::BLOCK_SIZE, p.y, p.x + Map::WIDTH * Map::BLOCK_SIZE, p.y + Map::HEIGHT * Map::BLOCK_SIZE);
+	line(p.x + Map::WIDTH * Map::BLOCK_SIZE, p.y + Map::HEIGHT * Map::BLOCK_SIZE, p.x, p.y + Map::HEIGHT * Map::BLOCK_SIZE);
+	line(p.x, p.y + Map::HEIGHT * Map::BLOCK_SIZE, p.x, p.y);
 }
